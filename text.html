@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <title>display picture</title>
+    <meta charset="utf-8">
+    <script src="lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+    <div id="mylegend">loading...</div>
+
+    <script>
+        init(50, "mylegend", 500, 350, main);
+        var field;  //define attr for all the function
+        function main(){
+            var layer = new LSprite();
+            addChild(layer);
+            field = new LTextField();//can not be: var field = new LTextField();
+
+            field.x = 50;
+            field.y = 50;
+            //field.text = "Hello World!";
+            field.size = 30;
+            field.color = "#333333";
+            field.weight = "bolder";
+            //field.setType(LTextFieldType.INPUT);
+
+            field.text = "Wait Click.";
+            layer.addChild(field);
+
+            layer.addEventListener(LMouseEvent.MOUSE_DOWN, downshow);
+            layer.addEventListener(LMouseEvent.MOUSE_UP, upshow);
+        }
+        function downshow(event){
+            field.text = "Mouse Down.";
+        }
+        function upshow(event){
+            field.text = "Mouse Up.";
+        }
+    </script>
+</body>
+</html>
