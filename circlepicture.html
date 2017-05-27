@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <title>display picture</title>
+    <meta charset="utf-8">
+    <script src="lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+    <div id="mylegend">loading...</div>
+
+    <script>
+    var loader;
+    init(50, 'mylegend', 500, 350, main);
+
+    function main(){
+        loader = new LLoader();
+        loader.addEventListener(LEvent.COMPLETE, loadBitmapdata);
+        loader.load("cang.jpg", "bitmapData");
+    }
+
+    function loadBitmapdata(event){
+        var bitmapdata = new LBitmapData(loader.content);
+        //var bitmap = new LBitmap(bitmapdata);
+        //addChild(bitmap);
+        var backLayer = new LSprite();
+        addChild(backLayer);
+        backLayer.graphics.beginBitmapFill(bitmapdata);
+        backLayer.graphics.drawArc(1, "#000", [210, 180, 150, 0, 2*Math.PI]);
+    }
+    </script>
+</body>
+</html>
