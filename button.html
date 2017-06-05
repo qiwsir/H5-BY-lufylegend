@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <title>button</title>
+    <script src="lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+    <div id="mylegend"></div>
+    <script>
+        init(50, "mylegend", 300, 300, main)
+        var loader, bitmapup, bitmapover, field;
+        function main(){
+            loader = new LLoader();
+            loader.addEventListener(LEvent.COMPLETE, loadUp);
+            loader.load("cang.jpg", "bitmapData");
+        }
+        function loadUp(event){
+            bitmapup = new LBitmap(new LBitmapData(loader.content));
+            loader = new LLoader();
+            loader.addEventListener(LEvent.COMPLETE, loadOver);
+            loader.load("over.jpg", "bitmapData");
+        }
+        function loadOver(){
+            bitmapover = new LBitmap(new LBitmapData(loader.content));
+            var layer = new LSprite();
+            addChild(layer);
+            field = new LTextField();
+            field.text = "Wait Click";
+            layer.addChild(field);
+            var testButton = new LButton(bitmapup, bitmapover);
+            testButton.y = 50;
+            layer.addChild(testButton);
+            testButton.addEventListener(LMouseEvent.MOUSE_DOWN, downshow);
+        }
+        function downshow(event){
+            field.text = "testButton Click";
+        }
+    </script>
+</body>
+</html>
