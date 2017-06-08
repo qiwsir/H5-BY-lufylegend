@@ -20,10 +20,12 @@
 
         //以下两个变量每次定义
         var imgData = new Array(
-            {name:"shitou", path:"shitou.jpg"},
-            {name:"jiandao", path:"jiandao.jpg"},
-            {name:"bu", path:"bu.jpg"});//不同项目，对此变量重新命名
-        var imgArr = Array("shitou", "jiandao", "bu");
+            {name:"guo", path:"./images/guo.jpg"},
+            {name:"kuai", path:"./images/kuai.jpg"},
+            {name:"pen", path:"./images/pen.jpg"},
+            {name:"wan", path:"./images/wan.jpg"}
+            );//不同项目，对此变量重新命名
+        var imgArr = Array("guo", "kuai", "pen", "wan");
         //
 
         var showList = new Array();//存储图片物体信息
@@ -110,7 +112,7 @@
         }
         function initClickLayer(imgdata, x=30, y=35){
             clickLayer = new LSprite();
-            clickLayer.graphics.drawRect(4, "#ff8800", [0,0, 300, 110], true, "#ffffff");
+            clickLayer.graphics.drawRect(4, "#ff8800", [0,0, 400, 110], true, "#ffffff");
             var msgText = new LTextField();
             msgText.text = "请点击选择项：";
             msgText.weight = "bolder";
@@ -127,7 +129,7 @@
                 btn.addEventListener(LMouseEvent.MOUSE_UP, onclick);
             }
 
-            clickLayer.x = 250;
+            clickLayer.x = 200;
             clickLayer.y = 275;
             backLayer.addChild(clickLayer);
         }
